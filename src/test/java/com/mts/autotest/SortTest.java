@@ -28,15 +28,16 @@ public class SortTest {
         System.setProperty("webdriver.chrome.driver", ConfigProperties.getTestProperty("chromeDriver"));
         Configuration.browser = "chrome";
         open(ConfigProperties.getTestProperty("url"));
-
         $(byXpath("//*[@id=\"header-top\"]/div/div[1]/ul/li[1]/div/a[1]")).click();
-        //li[i] отвечет за номер категории на сайте
-        // изменить номер категории можно в проперти файле
+
+
+
+        //li[i] отвечет за номер подкатегории на сайте
+        // изменить номер подкатегории можно в проперти файле
         $(byXpath("//*[@id=\"menu-catalog\"]/li["+ConfigProperties.getTestProperty("categoryNumber")+"]/a")).click();
         $(byXpath("/html/body/div[1]/main/div[2]/a[1]")).click();
         $(byXpath("/html/body/div[1]/main/div[2]/a[1]")).click();
         $(byXpath("//*[@id=\"sort-filter\"]/div[1]/div/button/span[2]")).click();
-
 
         SelenideElement listFirstPage = $(getElement(By.className("catalog-items-list")));
         productNameFirstPage = listFirstPage.find(By.className("item"), 0).find(By.tagName("h3")).getText();
@@ -45,7 +46,6 @@ public class SortTest {
         $(byXpath("//*[@id=\"sort-filter\"]/div[1]/div/ul/li[2]/a")).click();
         SelenideElement endButton = $(byXpath("//*[@id=\"catalog-items-page\"]/div[6]/div[5]/div[1]/div[3]/div/span[10]"));
         endButton.click();
-        $(By.className("loader hide"));
         sleep(5000);
 
         SelenideElement listLastPage = $(getElement(By.className("catalog-items-list")));
